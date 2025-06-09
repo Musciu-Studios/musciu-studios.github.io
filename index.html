@@ -8,16 +8,16 @@
     <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Roboto:400,700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1e1e2f;
-            --accent: #ffb347;
-            --text: #f4f4f4;
-            --secondary: #23234a;
-            --shadow: 0 4px 32px rgba(0,0,0,0.4);
+            --primary: #efe0cd;
+            --accent: #708238;
+            --text: #708238;
+            --secondary: #e0d3b8;
+            --shadow: 0 4px 32px rgba(112,130,56,0.15);
         }
         html, body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: var(--primary);
             color: var(--text);
             font-family: 'Roboto', Arial, sans-serif;
             min-height: 100vh;
@@ -32,6 +32,7 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            background: var(--primary);
         }
         .logo {
             margin-bottom: 32px;
@@ -41,17 +42,20 @@
             0%, 100% { transform: translateY(0);}
             50% { transform: translateY(-20px);}
         }
-        .logo svg {
+        .logo img {
             width: 120px;
             height: 120px;
+            object-fit: contain;
             filter: drop-shadow(0 0 24px var(--accent));
+            background: transparent;
+            border-radius: 50%;
         }
         h1 {
             font-family: 'Orbitron', Arial, sans-serif;
             font-size: 3rem;
             letter-spacing: 0.1em;
             color: var(--accent);
-            text-shadow: 0 2px 16px #0008;
+            text-shadow: 0 2px 16px #efe0cd80;
             margin: 0 0 16px 0;
             animation: fadeInDown 1.2s cubic-bezier(.77,0,.18,1) 0.2s both;
         }
@@ -61,7 +65,7 @@
         }
         p.subtitle {
             font-size: 1.3rem;
-            color: #fff9;
+            color: #708238cc;
             margin-bottom: 40px;
             animation: fadeInUp 1.2s cubic-bezier(.77,0,.18,1) 0.6s both;
         }
@@ -88,7 +92,7 @@
             padding: 80px 24px 40px 24px;
             max-width: 800px;
             margin: 0 auto;
-            background: rgba(30,30,47,0.85);
+            background: rgba(224,211,184,0.85);
             border-radius: 24px;
             box-shadow: var(--shadow);
             margin-top: -60px;
@@ -106,7 +110,8 @@
             margin-top: 32px;
         }
         .game-card {
-            background: var(--secondary);
+            background: var(--primary);
+            border: 2px solid var(--accent);
             border-radius: 16px;
             box-shadow: 0 2px 16px #0005;
             padding: 24px;
@@ -118,22 +123,22 @@
         }
         .game-card:hover {
             transform: translateY(-8px) scale(1.03);
-            box-shadow: 0 8px 32px #0008;
+            box-shadow: 0 8px 32px #70823833;
         }
         .game-title {
+            color: var(--accent);
             font-family: 'Orbitron', Arial, sans-serif;
             font-size: 1.2rem;
-            color: var(--accent);
             margin-bottom: 8px;
         }
         .game-desc {
-            color: #fff9;
+            color: #708238cc;
             font-size: 1rem;
         }
         footer {
             text-align: center;
             padding: 32px 0 16px 0;
-            color: #fff6;
+            color: #70823899;
             font-size: 1rem;
             letter-spacing: 0.05em;
         }
@@ -143,7 +148,7 @@
             transition: color 0.2s;
         }
         a:hover {
-            color: #fff;
+            color: #333;
         }
         @media (max-width: 600px) {
             h1 { font-size: 2rem; }
@@ -155,15 +160,8 @@
 <body>
     <header>
         <div class="logo">
-            <!-- Simple animated SVG logo, customize as needed -->
-            <svg viewBox="0 0 100 100">
-                <circle cx="50" cy="50" r="40" fill="#23234a" stroke="#ffb347" stroke-width="6"/>
-                <polygon points="50,20 80,80 20,80" fill="#ffb347">
-                    <animate attributeName="points" dur="2s" repeatCount="indefinite"
-                        values="50,20 80,80 20,80; 50,30 75,75 25,75; 50,20 80,80 20,80"/>
-                </polygon>
-                <text x="50%" y="58%" text-anchor="middle" fill="#fff" font-size="28" font-family="Orbitron" dy=".3em">M</text>
-            </svg>
+            <!-- Use your logo from assets folder -->
+            <img src="assets/logo.png" alt="Musciu Studios Logo">
         </div>
         <h1>Musciu Studios</h1>
         <p class="subtitle">Crafting unique indie games with passion and creativity.</p>
