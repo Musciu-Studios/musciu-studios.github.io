@@ -5,8 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Musciu Studios</title>
     <meta name="description" content="Official site for Musciu Studios, an indie game development studio.">
-    <link href="https://fonts.googleapis.com/css?family=Orbitron:700|Roboto:400,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'Tagesschrift';
+            src: url('assets/fonts/Tagesschrift-Regular.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
         :root {
             --primary: #efe0cd;
             --accent: #708238;
@@ -51,7 +58,7 @@
             border-radius: 50%;
         }
         h1 {
-            font-family: 'Orbitron', Arial, sans-serif;
+            font-family: 'Tagesschrift', Arial, sans-serif;
             font-size: 3rem;
             letter-spacing: 0.1em;
             color: var(--accent);
@@ -126,8 +133,8 @@
             box-shadow: 0 8px 32px #70823833;
         }
         .game-title {
+            font-family: 'Tagesschrift', Arial, sans-serif;
             color: var(--accent);
-            font-family: 'Orbitron', Arial, sans-serif;
             font-size: 1.2rem;
             margin-bottom: 8px;
         }
@@ -160,17 +167,15 @@
 <body>
     <header>
         <div class="logo">
-            <!-- Use your logo from assets folder -->
             <img src="assets/logo.png" alt="Musciu Studios Logo">
         </div>
         <h1>Musciu Studios</h1>
-        <p class="subtitle">Crafting unique indie games with passion and creativity.</p>
         <div class="scroll-down" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">&#8595;</div>
     </header>
     <section id="about">
-        <h2>About Us</h2>
+        <h2>About</h2>
         <p>
-            Musciu Studios is a small, independent game development studio dedicated to creating memorable and innovative gaming experiences. We believe in the power of storytelling, art, and gameplay to inspire and entertain players around the world.
+            Musciu Studios is solo indie game development studio based in Italy, dedicated to create engaging games that are fair and respectful of the customer.
         </p>
         <div class="games-list">
             <div class="game-card">
