@@ -259,9 +259,26 @@ h6 {
 }
 
 .navmenu ul {
-  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   padding: 0 0 20px 0;
   margin: 0;
+  list-style: none;
+}
+
+.navmenu ul li a {
+  color: #fffbe9;
+}
+
+.navmenu ul li a:hover {
+  color: var(--nav-hover-color);
+}
+
+.navmenu ul label span {
+  color: #fffbe9;
 }
 
 .navmenu a,
@@ -359,6 +376,54 @@ h6 {
 .navmenu .dropdown>.dropdown-active {
   display: block;
   background-color: rgba(33, 37, 41, 0.03);
+}
+
+/* Navmenu vertical centering and spacing */
+.navmenu ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 0 20px 0;
+  margin: 0;
+}
+
+/* Dyslexic switch at bottom of navmenu */
+.dyslexic-switch-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: auto;
+  padding-bottom: 16px;
+}
+
+.dyslexic-switch-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  font-family: var(--nav-font);
+  color: var(--nav-color);
+  cursor: pointer;
+  background: var(--surface-color);
+  border-radius: 24px;
+  padding: 6px 16px;
+  box-shadow: 0 1px 4px rgba(112,130,56,0.06);
+}
+
+.dyslexic-switch-label:hover {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.dyslexic-switch-checkbox {
+  width: 20px;
+  height: 20px;
+  accent-color: var(--accent-color);
+  margin-left: 4px;
+  border-radius: 50%; /* Makes the checkbox round */
 }
 
 /*--------------------------------------------------------------
@@ -506,6 +571,7 @@ section,
   background-color: var(--background-color);
   padding: 60px 0;
   overflow: clip;
+  border-radius: 24px; /* Add this line for rounded corners */
 }
 
 /*--------------------------------------------------------------
@@ -1272,4 +1338,18 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+/* OpenDyslexic font-face */
+@font-face {
+  font-family: 'OpenDyslexic';
+  src: url('../fonts/opendyslexic/OpenDyslexic-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Dyslexic font toggle */
+.dyslexic-font, .dyslexic-font * {
+  font-family: 'OpenDyslexic', Arial, sans-serif !important;
 }
