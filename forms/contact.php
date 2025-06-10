@@ -1,41 +1,37 @@
 <?php
-  /**
-  * Requires the "PHP Email Form" library
-  * The "PHP Email Form" library is available only in the pro version of the template
-  * The library should be uploaded to: vendor/php-email-form/php-email-form.php
-  * For more info and help: https://bootstrapmade.com/php-email-form/
-  */
+header('Content-Type: application/json');
 
-  // Replace contact@example.com with your real receiving email address
-  $receiving_email_address = 'contact@example.com';
+// Set your receiving email address
+$receiving_email_address = 'musciu.studios@gmail.com';
 
-  if( file_exists($php_email_form = '../assets/vendor/php-email-form/php-email-form.php' )) {
-    include( $php_email_form );
-  } else {
-    die( 'Unable to load the "PHP Email Form" Library!');
-  }
+// Basic validation
+if (
+    empty($_POST['name']) ||
+    empty($_POST['email']) ||
+    empty($_POST['subject']) ||
+    empty($_POST['message']) ||
+    !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)
+) {
+    echo json_encode(['success' => false, 'message' => 'Please fill in all fields correctly.']);
+    exit;
+}
 
-  $contact = new PHP_Email_Form;
-  $contact->ajax = true;
-  
-  $contact->to = $receiving_email_address;
-  $contact->from_name = $_POST['name'];
-  $contact->from_email = $_POST['email'];
-  $contact->subject = $_POST['subject'];
+$name = strip_tags($_POST['name']);
+$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+$subject = strip_tags($_POST['subject']);
+$message = strip_tags($_POST['message']);
 
-  // Uncomment below code if you want to use SMTP to send emails. You need to enter your correct SMTP credentials
-  /*
-  $contact->smtp = array(
-    'host' => 'example.com',
-    'username' => 'example',
-    'password' => 'pass',
-    'port' => '587'
-  );
-  */
+$email_subject = "Contact Form: $subject";
+$email_body = "From: $name\n";
+$email_body .= "Email: $email\n\n";
+$email_body .= "Message:\n$message\n";
 
-  $contact->add_message( $_POST['name'], 'From');
-  $contact->add_message( $_POST['email'], 'Email');
-  $contact->add_message( $_POST['message'], 'Message', 10);
+$headers = "From: $name <$email>\r\n";
+$headers .= "Reply-To: $email\r\n";
 
-  echo $contact->send();
+if (mail($receiving_email_address, $email_subject, $email_body, $headers)) {
+    echo json_encode(['success' => true, 'message' => 'Your message has been sent. Thank you!']);
+} else {
+    echo json_encode(['success' => false, 'message' => 'There was an error sending your message. Please try again later.']);
+}
 ?>
